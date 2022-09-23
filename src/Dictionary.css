@@ -1,3 +1,15 @@
-.Dictionary {
-  padding: 60px;
+.Dictionary section {
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 10%);
+  margin: 20px 0;
+}
+
+.Dictionary input {
+  width: 40%;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  box-shadow: 2px 10px 20px rgba(0, 0, 0, 12%);
+  padding: 6px 4px;
+  color: #333;
 }

@@ -1,6 +1,10 @@
 .App {
   text-align: center;
-  background: F6F6F6;
+  background: #ffffff;
+}
+
+a {
+  color: #ae0373;
 }
 
 .App footer {
@@ -9,5 +13,5 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: #c98475;
 }

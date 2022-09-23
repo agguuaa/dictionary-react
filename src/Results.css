@@ -2,3 +2,9 @@
   text-align: left;
   line-height: 20px;
 }
+
+.Results h2 {
+  font-size: 36px;
+  font-weight: bold;
+  line-height: 1.5;
+}
