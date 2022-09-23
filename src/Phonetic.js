@@ -5,9 +5,7 @@ export default function Phonetic(props) {
   if (props.phonetic) {
     return (
       <ul className="Phonetic">
-        <a href={props.phonetic.audio} target="_blank">
-          Listen
-        </a>
+        <a href={props.phonetic.audio}>Listen</a>
 
         {props.phonetic.text}
       </ul>
