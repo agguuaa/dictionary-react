@@ -1,8 +1,9 @@
 .Dictionary section {
-  padding: 30px;
+  box-shadow: 0px 30px 50px rgba(65, 50, 100, 0.08);
   border-radius: 20px;
-  box-shadow: 0px 10px 15px rgba(0, 0, 0, 10%);
-  margin: 20px 0;
+  background: white;
+  margin-top: 10px;
+  padding: 40px;
 }
 
 .Dictionary .search-input {
