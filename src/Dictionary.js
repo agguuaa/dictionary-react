@@ -7,45 +7,63 @@ import Photos from "./Photos";
 export default function Dictionary() {
   let [keyword, setKeyword] = useState("");
   let [results, setResults] = useState(null);
+  let [photos, setPhotos] = useState([]);
+  let [loaded, setLoaded] = useState(false);
 
-  function handleKeywordChange(event) {
-    setKeyword(event.target.value);
-  }
-
-  function handleDictionaryResponse(response) {
+  function handleResponse(response) {
     setResults(response.data[0]);
+    let pexelsApiKey =
+      "563492ad6f91700001000001e7b2800bac8748beaa49fa56b3566ecb";
+    let pexelsApiUrl = `https://api.pexels.com/v1/search?query=${keyword}&per_page=1`;
+
+    let headers = { Authorization: ` Bearer ${pexelsApiKey}` };
+    axios.get(pexelsApiUrl, { headers: headers }).then(handlePexelsResponse);
   }
 
   function handlePexelsResponse(response) {
     setPhotos(response.data.photos);
   }
 
-  function search(event) {
-    event.preventDefault();
-
-    let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${keyword}`;
-    axios.get(apiUrl).then(handleResponse);
-
-    let pexelsApiKey =
-      "563492ad6f91700001000001e7b2800bac8748beaa49fa56b3566ecb";
-
-    let pexelsApiUrl = `https://api.pexels.com/v1/search?query=${keyword}&per_page=1`;
-    axios
-      .get(pexelsApiUrl, {
-        headers: { Authorization: ` Bearer ${pexelsApiKey}` },
-      })
-      .then(handlePexelsResponse);
+  function load() {
+    setLoaded(true);
+    search();
   }
 
-  return (
-    <div className="Dictionary">
-      <h1>What word do you want to look up?</h1>
-      <form onSubmit={search}>
-        <input type="search" autoFocus={true} onChange={handleKeywordChange} />
-      </form>
+  function search() {
+    let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${keyword}`;
+    axios.get(apiUrl).then(handleResponse);
+  }
 
-      <Results results={results} />
-      <Photos photos={photos} />
-    </div>
-  );
+  function handleSubmit(event) {
+    event.preventDefault();
+    search();
+  }
+
+  function handleKeywordChange(event) {
+    setKeyword(event.target.value);
+  }
+
+  if (loaded) {
+    return (
+      <div className="Dictionary">
+        <section>
+          <form onSubmit={handleSubmit}>
+            <label>What word do you want to look up?</label>
+            <input
+              type="search"
+              placeholder="Search for a word"
+              autoFocus={true}
+              className="form-control search-input"
+              onChange={handleKeywordChange}
+            />
+          </form>
+        </section>
+        <Results results={results} />
+        <Photos photos={photos} />
+      </div>
+    );
+  } else {
+    handleSubmit();
+    return "Loading!";
+  }
 }
