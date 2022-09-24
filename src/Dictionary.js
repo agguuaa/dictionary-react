@@ -50,7 +50,6 @@ export default function Dictionary() {
           <h1>What word do you want to look up?</h1>
           <input
             type="search"
-            placeholder="Search for a word"
             autoFocus={true}
             className="form-control search-input"
             onChange={handleKeywordChange}
