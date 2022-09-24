@@ -8,7 +8,11 @@ function App() {
     <div className="App">
       <div className="container">
         <header className="App-header">
-          <img src={Logo} className="App-logo img-fluid" alt="logo" />
+          <img
+            src={Logo}
+            className="App-logo img-fluid max-width=300px"
+            alt="logo"
+          />
         </header>
         <main>
           <Dictionary />
