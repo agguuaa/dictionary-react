@@ -46,9 +46,9 @@ export default function Dictionary() {
   if (loaded) {
     return (
       <div className="Dictionary">
-        <section>
+        <div className="Search-box">
           <form onSubmit={handleSubmit}>
-            <label>What word do you want to look up?</label>
+            <h1>What word do you want to look up?</h1>
             <input
               type="search"
               placeholder="Search for a word"
@@ -57,13 +57,14 @@ export default function Dictionary() {
               onChange={handleKeywordChange}
             />
           </form>
-        </section>
+        </div>
+
         <Results results={results} />
         <Photos photos={photos} />
       </div>
     );
   } else {
-    handleSubmit();
+    load();
     return "Loading!";
   }
 }
