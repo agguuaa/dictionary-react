@@ -17,8 +17,23 @@ function App() {
         <main>
           <Dictionary />
         </main>
-        <footer className="text-center">
-          <small>Coded by Aga</small>
+        <footer>
+          This project was coded by Aga and is{" "}
+          <a
+            href="https://github.com/agguuaa/dictionary-react"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            open-sourced on GitHub
+          </a>{" "}
+          and{" "}
+          <a
+            href="https://app.netlify.com/sites/elaborate-jalebi-07c736/overview"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            hosted on Netlify
+          </a>
         </footer>
       </div>
     </div>
